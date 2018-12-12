@@ -10,18 +10,18 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'jquery-rails', '~> 3.0.1'
-gem 'turbolinks', '~> 1.2'
+gem 'jquery-rails'
+gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  gem 'sdoc', '~> 0.3.20', require: false
+  gem 'sdoc', require: false
 end
 
 group :development do
-  gem 'quiet_assets', '~> 1.0.2'
-  gem 'pry', '~> 0.9.12.2'
-  gem 'sqlite3', '~> 1.3.7'
+  gem 'quiet_assets'
+  gem 'pry'
+  gem 'sqlite3'
 end
 
 group :production do
