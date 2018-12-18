@@ -1,0 +1,23 @@
+<% if @post.errors.any? %>
+  <p>The following errors were found:
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  <%= submit_tag "Create New Post" %>
+<% end %>
