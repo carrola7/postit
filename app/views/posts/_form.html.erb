@@ -1,23 +1,20 @@
-<% if @post.errors.any? %>
-  <p>The following errors were found:
-  <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-      <li>
-        <%= msg %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'shared/form_error', form: @post %>
 
-<%= form_for @post do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :url %>
-  <%= f.text_field :url %>
-
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <br>
-  <%= submit_tag "Create New Post" %>
-<% end %>
+<div class='well'>
+  <%= form_for @post do |f| %>
+    <div class='control-group'>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :description %>
+      <%= f.text_area :description, rows: 5 %>
+    </div>
+    <br>
+    <%= submit_tag btn_txt, class: 'btn btn-primary' %>
+  <% end %>
+</div>
