@@ -12,10 +12,22 @@
   <%= @post.description %>
 </p>
 
-<h5>Add a Comment</h5>
-
 <%= form_for [@post, @comment] do |f| %>
-  <%= render 'shared/form_error', form: @comment %>
-  <%= f.text_area :body %><br>
-  <%= f.submit class: 'btn btn-primary' %>
+  <div class='control-group'>
+    <%= render 'shared/form_error', form: @comment %>
+    <%= f.label :body, 'Leave a Comment' %>
+    <%= f.text_area :body, rows: 3, class: 'span4' %><br>
+    <%= f.submit class: 'btn btn-primary block' %>
+  </div>
+<% end %>
+
+
+<h4>Comments:</h4>
+<% @post.comments.each do |comment| %>
+  <div class='row'>
+    <div class='span8 well'>
+      <span class="quiet">posted by</span> <%= comment.creator.username %>
+      <small><%= format_date comment.created_at %></small>
+    </div>
+  </div>
 <% end %>

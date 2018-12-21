@@ -15,6 +15,11 @@
       <%= f.text_area :description, rows: 5 %>
     </div>
     <br>
+    <div class='control-group'>
+      <%=  collection_check_boxes(:post, :category_ids, @categories, :id, :name) do |b|
+            b.label(class: "checkbox inline") { b.check_box + b.text} 
+            end %>
+    </div>
     <%= submit_tag btn_txt, class: 'btn btn-primary' %>
   <% end %>
 </div>

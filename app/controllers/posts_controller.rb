@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_categories, only: [:show, :edit, :new, :update]
 
   def index
     @posts = Post.all
@@ -14,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    binding.pry
     @post = Post.new(post_params)
     @post.creator = User.first #TODO: change once we have authentication
 
@@ -25,7 +27,8 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @post.update(post_params)
@@ -39,10 +42,14 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit!
+    params.require(:post).permit(:title, :url, :description, category_ids: [])
   end
 
   def set_post
     @post = Post.find(params[:id])    
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 end
