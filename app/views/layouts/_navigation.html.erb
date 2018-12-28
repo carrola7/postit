@@ -2,9 +2,6 @@
   <li>
     <%= link_to "Postit!", root_path, :class => 'brand' %>
   </li>
-  <li>
-    <%= link_to 'link', '' %>
-  </li>
 </ul>
 <div class="btn-group nav_item">
   <%= link_to '#', class: 'btn btn-small dropdown-toggle', 'data-toggle' => 'dropdown' do %>
@@ -35,14 +32,36 @@
 <% end %>
   
 <% if logged_in? %>
-  <div class='nav_item'>
-    <%= render 'sessions/logout' %>
+  <div class="btn-group nav_item">
+    <%= link_to '#', class: 'btn btn-small dropdown-toggle', 'data-toggle' => 'dropdown' do %>
+    <%= current_user.username %> <span class='caret'></span>
+    <% end %>
+    <ul class='dropdown-menu'>
+      <li>
+        <%= link_to edit_user_path(current_user) do %>
+          <i class="icon-pencil"></i>
+          edit profile
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_path(current_user) do %>
+          <i class="icon-user"></i>
+          view profile
+        <% end %>
+      </li>
+      <li>
+        <%= link_to logout_path do %>
+          <i class="icon-circle-arrow-left"></i>
+          logout
+        <% end %>
+      </li>
+    </ul>
   </div>
 <% else %>
   <div class='nav_item'>
     <%= link_to 'Log in', login_path, class: 'btn' %>
   </div>
   <div class='nav_item'>
-    <%= link_to 'Sign Up', signup_path, class: 'btn' %>
+    <%= link_to 'Sign Up', register_path, class: 'btn' %>
   </div>
 <% end %>

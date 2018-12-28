@@ -1,13 +1,16 @@
 <h5>Enter username and password</h5>
 
-<%= form_tag(path, method: "post") do %>
-  <div class='control-group'>
-    <%= label_tag(:username, "Username:") %>
-    <%= text_field_tag(:username) %>
-  </div>
-  <div class='control-group'>
-    <%= label_tag(:password, "Password:") %>
-    <%= password_field_tag(:password) %>
-  </div>
-  <%= submit_tag(button_text, class: 'btn btn-primary') %>
-<% end %>
+<div class="well">
+  <%= form_tag(path, method: "post") do %>
+    <div class='control-group'>
+      <%= label_tag(:username, "Username:") %>
+      <%= text_field_tag(:username) %>
+    </div>
+    <div class='control-group'>
+      <%= label_tag(:password, "Password:") %>
+      <%= password_field_tag(:password) %>
+    </div>
+    <%= submit_tag(button_text, class: 'btn btn-primary') %>
+  <% end %>
+</div>
+
