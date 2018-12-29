@@ -3,8 +3,11 @@ class Post < ActiveRecord::Base
   has_many :comments, foreign_key: :post_id
   has_many :post_categories
   has_many :categories, through: :post_categories
+  has_many :votes, as: :voteable
 
   validates :title, presence: true, length: {minimum: 5}
   validates :url, presence: true, uniqueness: true
   validates :description, presence: true
+
+  include CalculateVotes
 end

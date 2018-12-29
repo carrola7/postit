@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(params.require(:comment).permit(:body))
-    @comment.creator = User.first
+    @comment.creator = current_user
 
     if @comment.save
       flash[:notice] = "Your comment was added"
@@ -12,5 +12,19 @@ class CommentsController < ApplicationController
     else
       render 'posts/show'
     end
+  end
+
+  def vote
+    comment = Comment.find(params[:id])
+
+    vote = Vote.new(vote: params[:vote], voteable: comment, creator: current_user)
+
+    if vote.save
+      flash[:notice] = "Your vote was counted"
+    else
+      flash[:error] = "Your vote was not counted"
+    end
+
+    redirect_to :back
   end
 end
