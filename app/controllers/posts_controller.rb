@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :vote]
   before_action :set_categories, only: [:show, :edit, :new, :update]
-  before_action :ensure_logged_in, only: [:new, :create, :edit, :update]
+  before_action :ensure_logged_in, only: [:new, :create, :edit, :update, :vote]
 
   def index
     @posts = Post.all.sort_by{|x| x.total_votes}.reverse
@@ -16,7 +16,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    binding.pry
     @post = Post.new(post_params)
     @post.creator = current_user
 
