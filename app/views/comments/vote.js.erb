@@ -1,0 +1,6 @@
+<% if (@vote.valid?) %>
+  $('#comment_<%= @comment.id %>_votes').html(<%= "#{@comment.total_votes}" %>)
+<% else %>
+  $('div.alert').remove();
+  $('div.row > div.span12').prepend('<%= ajax_flash %>')
+<% end%>
