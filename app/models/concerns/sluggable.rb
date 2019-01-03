@@ -31,4 +31,14 @@ module Sluggable
     str.gsub! /-+/,"-"
     str.downcase
   end
+
+  def slug=(str)
+    @slug = str
+  end
+
+  def slug
+    @slug
+  end
+
+
 end
