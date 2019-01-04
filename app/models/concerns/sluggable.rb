@@ -36,9 +36,4 @@ module Sluggable
     @slug = str
   end
 
-  def slug
-    @slug
-  end
-
-
 end
