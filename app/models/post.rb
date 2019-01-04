@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   has_many :post_categories
   has_many :categories, through: :post_categories
 
-  before_create -> { generate_slug('title') }
+  before_save -> { generate_slug('title') }
 
   validates :title, presence: true, length: {minimum: 5}
   validates :url, presence: true, uniqueness: true

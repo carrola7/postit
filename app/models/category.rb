@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   has_many :post_categories
   has_many :posts, through: :post_categories
 
-  before_create -> { generate_slug('name') }
+  before_save -> { generate_slug('name') }
 
   validates :name, presence: true
 

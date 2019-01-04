@@ -7,11 +7,11 @@ module Sluggable
 
   def generate_slug(field)
     slug = to_slug(self.send field)
-    post = Post.find_by slug: slug
+    model = self.class.find_by slug: slug
     count = 2
-    while post && post != self
+    while model && model != self
       slug = append_suffix(slug, count)
-      post = Post.find_by slug: slug
+      model = self.class.find_by slug: slug
       count += 1
     end
     self.slug = slug
@@ -30,10 +30,6 @@ module Sluggable
     str.gsub! /\s*[^A-Za-z0-9]\s*/, '-'
     str.gsub! /-+/,"-"
     str.downcase
-  end
-
-  def slug=(str)
-    @slug = str
   end
 
 end
