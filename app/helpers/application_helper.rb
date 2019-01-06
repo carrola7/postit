@@ -1,6 +1,9 @@
 module ApplicationHelper
   def format_date(date)
-    date.strftime("on %e/%m/%y at %H:%M")
+    if logged_in? && !current_user.timezone.blank?
+      date = date.in_time_zone(current_user.timezone)
+    end
+    date.strftime("on %e/%m/%y at %H:%M %Z")
   end
 
   def format_url(url)

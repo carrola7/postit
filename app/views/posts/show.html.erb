@@ -1,4 +1,4 @@
-<% if logged_in?%>
+<% if admin? || current_user == @post.creator%>
   <p class='pull-right'>
     [<%= link_to 'edit this post', edit_post_path(@post) %>]
   </p>
@@ -10,6 +10,7 @@
 
 <%= render 'shared/content_title', title: @post.title %>
 
+<h4><%= link_to @post.url, format_url(@post.url) %></h4>
 <p>
   <%= @post.description %>
 </p>

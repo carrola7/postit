@@ -9,5 +9,9 @@
     <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
+  <div class='control-group'>
+    <%= f.label :timezone %>
+    <%= f.time_zone_select :timezone, ActiveSupport::TimeZone.all, default: Time.zone.name %>
+  </div>
     <%= f.submit btn_txt,  class: 'btn btn-primary' %>
 <% end %>
